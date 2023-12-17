@@ -24,7 +24,7 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -33,9 +33,7 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
-        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
-        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+                <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -44,11 +42,14 @@
 
 
 
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.25</version>
+            <version>8.0.33</version>
         </dependency>
+
 
     </dependencies>
 

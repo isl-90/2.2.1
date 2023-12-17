@@ -8,6 +8,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "model")
@@ -16,7 +17,7 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    @OneToOne(mappedBy = "car")
+    @OneToOne(mappedBy = "car_id")
     private User user;
 
     public Car() {
@@ -55,8 +56,9 @@ public class Car {
         this.series = series;
     }
 
-    public void setUser(User user) {
+    public User setUser(User user) {
         this.user = user;
+        return user;
     }
 
     @Override
