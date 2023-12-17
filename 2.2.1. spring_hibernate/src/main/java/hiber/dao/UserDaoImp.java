@@ -2,12 +2,12 @@ package hiber.dao;
 
 import hiber.model.Car;
 import hiber.model.User;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import jakarta.persistence.TypedQuery;
-
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -30,11 +30,11 @@ public class UserDaoImp implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public User getUserByCarModel(String model) {
-        String hql = "FROM Car car LEFT OUTER JOIN FETCH car.user WHERE car.model =: model";
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setParameter("model", model);
-        return query.setMaxResults(1).getSingleResult();
+    public void getUserByCarModel(String model) {
+        Car car = sessionFactory.getCurrentSession()
+                .createQuery("FROM Car car LEFT OUTER JOIN FETCH car.user WHERE car.model =: model", Car.class)
+                .setParameter("model", model).uniqueResult();
+        System.out.println(car.getUser().getFirstName());
+        System.out.println(car.getModel());
     }
-
 }

@@ -1,24 +1,27 @@
 package hiber.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "cars")
-public class Car {
+@Table(name = "car")
+public class Car implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     @Column(name = "model")
     private String model;
 
     @Column(name = "series")
     private int series;
-
-    @OneToOne(mappedBy = "car_id")
-    private User user;
 
     public Car() {
     }
@@ -28,8 +31,8 @@ public class Car {
         this.series = series;
     }
 
-    public Long getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
     public String getModel() {
@@ -40,12 +43,8 @@ public class Car {
         return series;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setModel(String model) {
@@ -56,18 +55,12 @@ public class Car {
         this.series = series;
     }
 
-    public User setUser(User user) {
-        this.user = user;
-        return user;
-    }
-
     @Override
     public String toString() {
         return "Car{" +
-                "id=" + id +
+                "user=" + user +
                 ", model='" + model + '\'' +
                 ", series=" + series +
-                ", user=" + user +
                 '}';
     }
 }
